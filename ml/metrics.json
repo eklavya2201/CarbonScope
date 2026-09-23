@@ -1,0 +1,25 @@
+{
+  "mae": 2.2643,
+  "rmse": 3.4902,
+  "r2": 0.9293,
+  "features": [
+    "distance_km",
+    "fuel_liters",
+    "passengers",
+    "electricity_kwh",
+    "grid_factor",
+    "renewable_share",
+    "vehicle_type_Car",
+    "vehicle_type_Bus",
+    "vehicle_type_Motorcycle",
+    "vehicle_type_Truck",
+    "vehicle_type_Train",
+    "vehicle_type_EV",
+    "fuel_type_Petrol",
+    "fuel_type_Diesel",
+    "fuel_type_CNG",
+    "fuel_type_Electric",
+    "fuel_type_Hybrid"
+  ],
+  "dataset_rows": 1200
+}
