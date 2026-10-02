@@ -92,6 +92,24 @@ python ml/train_model.py
 
 This regenerates the model and metrics from the included dataset.
 
+## Deploy on Render (free)
+
+The repo ships a `render.yaml` Blueprint, so the whole deploy is one click:
+
+1. Sign in to [Render](https://dashboard.render.com) and open **New + -> Blueprint**.
+2. Connect `eklavya2201/CarbonScope` and click **Apply**. Render reads `render.yaml`
+   (Python 3.13, `pip install -r requirements.txt`, `gunicorn run:app`).
+3. Wait for the first build (2-4 minutes). The service URL looks like
+   `https://carbonscope.onrender.com`.
+4. Open the URL, click the settings icon and **Add 150 sample trips** to fill the dashboard.
+
+Notes
+- The free plan sleeps after 15 minutes idle; the first request afterwards takes ~30 s.
+- SQLite lives on the service's ephemeral disk, so saved predictions reset on every deploy.
+  Attach a Render Disk mounted at the project folder (or switch `DATABASE_URL` to Postgres)
+  if you need them to persist.
+- Health check: `GET /api/health`.
+
 ## API
 - `GET /api/health`
 - `GET /api/dashboard`

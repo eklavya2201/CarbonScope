@@ -1,0 +1,19 @@
+# Render Blueprint for CarbonScope.
+# In the Render dashboard: New + -> Blueprint -> connect this repo -> Apply.
+# Or open https://render.com/deploy?repo=https://github.com/eklavya2201/CarbonScope
+services:
+  - type: web
+    name: carbonscope
+    runtime: python
+    plan: free
+    region: singapore
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn run:app --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.1
+      - key: FLASK_DEBUG
+        value: "0"
